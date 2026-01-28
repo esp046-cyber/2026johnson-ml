@@ -1,0 +1,1620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Johnson Tank Guide 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #00d4ff;
+            --secondary: #0066ff;
+            --accent: #ff3366;
+            --dark: #0a0e1a;
+            --darker: #050810;
+            --card-bg: #151b2e;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: var(--darker);
+            color: #fff;
+            overflow-x: hidden;
+            margin: 1%;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 51, 102, 0.08) 0%, transparent 50%),
+                linear-gradient(135deg, #050810 0%, #0a0e1a 100%);
+            z-index: -1;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--card-bg), var(--dark));
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            padding: 8px;
+            margin-bottom: 12px;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 18px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+            margin-bottom: 4px;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 11px;
+            color: var(--primary);
+            letter-spacing: 1px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+            margin-bottom: 12px;
+            animation: fadeIn 0.7s ease 0.2s backwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid var(--secondary);
+            border-radius: 6px;
+            padding: 8px 4px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary);
+            box-shadow: 0 4px 12px rgba(0, 212, 255, 0.3);
+        }
+
+        .stat-label {
+            font-size: 9px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .stat-value {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 16px;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .section {
+            background: var(--card-bg);
+            border-left: 3px solid var(--primary);
+            border-radius: 6px;
+            padding: 10px;
+            margin-bottom: 10px;
+            animation: slideIn 0.6s ease backwards;
+            animation-delay: calc(var(--delay) * 0.1s);
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .section:nth-child(1) { --delay: 1; }
+        .section:nth-child(2) { --delay: 2; }
+        .section:nth-child(3) { --delay: 3; }
+        .section:nth-child(4) { --delay: 4; }
+        .section:nth-child(5) { --delay: 5; }
+        .section:nth-child(6) { --delay: 6; }
+
+        h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 13px;
+            color: var(--primary);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        h2::before {
+            content: '▸';
+            color: var(--accent);
+            font-size: 16px;
+        }
+
+        h3 {
+            font-size: 11px;
+            color: var(--secondary);
+            margin: 8px 0 4px 0;
+            text-transform: uppercase;
+        }
+
+        p, li {
+            font-size: 12px;
+            line-height: 1.5;
+            color: #ccc;
+            margin-bottom: 6px;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 12px;
+        }
+
+        li::before {
+            content: '◆';
+            color: var(--primary);
+            font-size: 8px;
+            margin-right: 6px;
+        }
+
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .skill {
+            background: linear-gradient(135deg, var(--dark), var(--darker));
+            border: 1px solid var(--secondary);
+            border-radius: 6px;
+            padding: 8px;
+            transition: all 0.3s;
+        }
+
+        .skill:hover {
+            border-color: var(--primary);
+            transform: scale(1.03);
+        }
+
+        .skill-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 11px;
+            color: var(--primary);
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+
+        .skill-desc {
+            font-size: 10px;
+            color: #aaa;
+            line-height: 1.3;
+        }
+
+        .emblem-box {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(0, 102, 255, 0.1));
+            border: 1px solid var(--primary);
+            border-radius: 6px;
+            padding: 8px;
+            margin-top: 8px;
+        }
+
+        .combo-step {
+            background: rgba(255, 51, 102, 0.1);
+            border-left: 2px solid var(--accent);
+            padding: 6px 8px;
+            margin: 6px 0;
+            font-size: 11px;
+            border-radius: 3px;
+        }
+
+        .tip-box {
+            background: linear-gradient(135deg, rgba(255, 51, 102, 0.15), rgba(255, 51, 102, 0.05));
+            border: 1px dashed var(--accent);
+            border-radius: 6px;
+            padding: 8px;
+            margin-top: 8px;
+        }
+
+        .tip-box::before {
+            content: '💡 PRO TIP';
+            display: block;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 10px;
+            color: var(--accent);
+            margin-bottom: 4px;
+            font-weight: 700;
+        }
+
+        .counter-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 6px;
+            margin-top: 8px;
+        }
+
+        .counter-card {
+            background: var(--darker);
+            border: 1px solid #333;
+            border-radius: 4px;
+            padding: 6px;
+            font-size: 10px;
+            text-align: center;
+        }
+
+        .strong { color: #4ade80; }
+        .weak { color: #f87171; }
+
+        @media (max-width: 400px) {
+            h1 { font-size: 16px; }
+            .stats-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>⚡ Johnson Tank Guide</h1>
+        <div class="subtitle">Meta Build 2026 • Master the Transformer</div>
+    </div>
+
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-label">Difficulty</div>
+            <div class="stat-value">★★★☆☆</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Durability</div>
+            <div class="stat-value">★★★★★</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Impact</div>
+            <div class="stat-value">★★★★☆</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Hero Overview</h2>
+        <p>Johnson is a high-mobility tank who transforms into a car, carrying allies to initiate teamfights. His ultimate makes him one of the best ganking tanks in 2026 meta. Excels at map rotation and surprise attacks.</p>
+    </div>
+
+    <div class="section">
+        <h2>Skills Breakdown</h2>
+        <div class="skill-grid">
+            <div class="skill">
+                <div class="skill-name">Passive: Electromag</div>
+                <div class="skill-desc">Gains shield when HP drops below 30%. CD: 120s</div>
+            </div>
+            <div class="skill">
+                <div class="skill-name">S1: Deadly Pincers</div>
+                <div class="skill-desc">Deals damage + stun. Great for peel and engage</div>
+            </div>
+            <div class="skill">
+                <div class="skill-name">S2: Missile Loadout</div>
+                <div class="skill-desc">Enhanced basic attacks. Use while driving for damage</div>
+            </div>
+            <div class="skill">
+                <div class="skill-name">Ult: Rapid Touchdown</div>
+                <div class="skill-desc">Transform into car, carry ally, stun on impact</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Skill Leveling Priority</h2>
+        <div style="background: linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(0, 102, 255, 0.1)); border: 1px solid var(--primary); border-radius: 6px; padding: 10px; margin-bottom: 8px;">
+            <div style="text-align: center; font-family: 'Orbitron', sans-serif; font-size: 14px; color: var(--primary); margin-bottom: 6px;">ULT → S1 → S2</div>
+            <p style="font-size: 11px; margin: 0; text-align: center; color: #aaa;">Prioritize Ultimate for mobility, S1 for crowd control, S2 last for damage</p>
+        </div>
+        <ul>
+            <li><strong>Level 1-3:</strong> S1 → S2 → S1 (early stun power)</li>
+            <li><strong>Level 4:</strong> Unlock Ultimate immediately</li>
+            <li><strong>Level 5-7:</strong> Max S1 first (lower CD, higher stun)</li>
+            <li><strong>Level 8-12:</strong> Prioritize Ult whenever available</li>
+            <li><strong>Level 13-15:</strong> Finish S2 for enhanced damage</li>
+        </ul>
+        <div class="tip-box">
+            <p style="margin: 0;">Always upgrade Ult at 4, 8, 12! Each level increases crash damage and reduces cooldown significantly.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Best Passenger Picks</h2>
+        <h3>S-Tier (Optimal Synergy)</h3>
+        <div style="display: grid; grid-template-columns: 1fr; gap: 6px; margin: 8px 0;">
+            <div style="background: linear-gradient(135deg, rgba(74, 222, 128, 0.2), rgba(74, 222, 128, 0.05)); border-left: 3px solid #4ade80; padding: 6px 8px; border-radius: 4px;">
+                <strong style="color: #4ade80;">Odette</strong> - Carry into teamfight, she ults = instant wipe
+            </div>
+            <div style="background: linear-gradient(135deg, rgba(74, 222, 128, 0.2), rgba(74, 222, 128, 0.05)); border-left: 3px solid #4ade80; padding: 6px 8px; border-radius: 4px;">
+                <strong style="color: #4ade80;">Gusion</strong> - Burst assassin, perfect for pick-offs
+            </div>
+            <div style="background: linear-gradient(135deg, rgba(74, 222, 128, 0.2), rgba(74, 222, 128, 0.05)); border-left: 3px solid #4ade80; padding: 6px 8px; border-radius: 4px;">
+                <strong style="color: #4ade80;">Aurora</strong> - AoE freeze after crash = guaranteed kills
+            </div>
+        </div>
+        
+        <h3>A-Tier (Great Options)</h3>
+        <ul style="margin-top: 6px;">
+            <li><strong>Franco</strong> - Hook enemies into your crash path</li>
+            <li><strong>Aldous</strong> - Global pressure duo, split-push counter</li>
+            <li><strong>Lancelot</strong> - High burst damage for ganks</li>
+            <li><strong>Pharsa</strong> - Long-range follow-up damage</li>
+        </ul>
+        
+        <h3>B-Tier (Situational)</h3>
+        <ul>
+            <li><strong>Marksmen</strong> - Late game cleanup crew</li>
+            <li><strong>Supports</strong> - Safe positioning for utility</li>
+        </ul>
+        
+        <h3>❌ Avoid Taking</h3>
+        <div style="background: rgba(248, 113, 113, 0.1); border-left: 3px solid #f87171; padding: 6px 8px; border-radius: 4px; margin-top: 6px;">
+            <p style="margin: 0; font-size: 11px;">Tanks, fighters with no burst, heroes who need to farm. They waste your ult potential.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Map-Specific Routes</h2>
+        <h3>🗺️ Optimal Ult Paths</h3>
+        
+        <div class="combo-step" style="background: rgba(0, 212, 255, 0.1); border-left: 2px solid var(--primary);">
+            <strong>Top Lane Gank:</strong> Start base → Through river → Bush near turtle → Crash into tower area
+        </div>
+        
+        <div class="combo-step" style="background: rgba(0, 212, 255, 0.1); border-left: 2px solid var(--primary);">
+            <strong>Mid Lane Surprise:</strong> Base → Enemy blue buff area → Through mid bush → Side crash
+        </div>
+        
+        <div class="combo-step" style="background: rgba(0, 212, 255, 0.1); border-left: 2px solid var(--primary);">
+            <strong>Gold Lane Dive:</strong> Base → Bottom river → Crab area → Tower dive angle
+        </div>
+        
+        <div class="combo-step" style="background: rgba(0, 212, 255, 0.1); border-left: 2px solid var(--primary);">
+            <strong>Lord Steal Route:</strong> Base → Top jungle → Lord pit entrance → Crash + Flicker combo
+        </div>
+        
+        <div class="tip-box">
+            <p style="margin: 0;"><strong>Pro Route Tips:</strong> Always drive through fog of war. Use bushes for approach. Avoid obvious paths. Enemies can hear your engine!</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Timing Windows</h2>
+        <h3>⏱️ When to Strike</h3>
+        
+        <div style="background: var(--darker); border: 1px solid var(--secondary); border-radius: 6px; padding: 8px; margin: 8px 0;">
+            <div style="display: grid; grid-template-columns: auto 1fr; gap: 8px; align-items: center; margin-bottom: 6px;">
+                <span style="color: var(--primary); font-family: 'Orbitron', sans-serif; font-size: 16px; font-weight: 700;">0:30</span>
+                <span style="font-size: 11px;">First ult available - Gank overextended lane</span>
+            </div>
+            <div style="display: grid; grid-template-columns: auto 1fr; gap: 8px; align-items: center; margin-bottom: 6px;">
+                <span style="color: var(--primary); font-family: 'Orbitron', sans-serif; font-size: 16px; font-weight: 700;">2:00</span>
+                <span style="font-size: 11px;">Turtle spawns - Position for objective fight</span>
+            </div>
+            <div style="display: grid; grid-template-columns: auto 1fr; gap: 8px; align-items: center; margin-bottom: 6px;">
+                <span style="color: var(--primary); font-family: 'Orbitron', sans-serif; font-size: 16px; font-weight: 700;">3:00</span>
+                <span style="font-size: 11px;">Crab spawns - Secure vision control</span>
+            </div>
+            <div style="display: grid; grid-template-columns: auto 1fr; gap: 8px; align-items: center; margin-bottom: 6px;">
+                <span style="color: var(--primary); font-family: 'Orbitron', sans-serif; font-size: 16px; font-weight: 700;">8:00</span>
+                <span style="font-size: 11px;">Lord spawns - Set up gank rotation</span>
+            </div>
+            <div style="display: grid; grid-template-columns: auto 1fr; gap: 8px; align-items: center;">
+                <span style="color: var(--primary); font-family: 'Orbitron', sans-serif; font-size: 16px; font-weight: 700;">12:00</span>
+                <span style="font-size: 11px;">Ult Level 3 - Maximum impact window</span>
+            </div>
+        </div>
+        
+        <h3>⚡ Ideal Gank Moments</h3>
+        <ul>
+            <li><strong>Enemy pushing past river:</strong> High success rate</li>
+            <li><strong>No vision on enemy map:</strong> Surprise advantage</li>
+            <li><strong>Enemy used escape skills:</strong> Easy confirm kill</li>
+            <li><strong>2v1 numerical advantage:</strong> Dive safely</li>
+            <li><strong>After enemy recalls:</strong> 4v5 teamfight setup</li>
+        </ul>
+        
+        <h3>🚫 Bad Timing (Don't Ult)</h3>
+        <ul>
+            <li>Enemy has vision of you driving</li>
+            <li>All enemies under towers</li>
+            <li>Your team is dead/recalled</li>
+            <li>Important objectives spawning in 10s</li>
+            <li>You're needed to defend base</li>
+        </ul>
+        
+        <div class="emblem-box">
+            <strong style="color: var(--primary);">Ultimate CD Tracker:</strong> Early game 45s → Mid game 38s → Late game 32s (with max CDR). Plan ganks around this!
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Best Build 2026</h2>
+        <h3>Core Items</h3>
+        <ul>
+            <li><strong>Tough Boots</strong> - Reduces CC duration</li>
+            <li><strong>Cursed Helmet</strong> - Magic damage AOE while driving</li>
+            <li><strong>Dominance Ice</strong> - Anti-regen + physical defense</li>
+            <li><strong>Antique Cuirass</strong> - Reduces enemy damage output</li>
+            <li><strong>Athena's Shield</strong> - Magic defense + HP regen</li>
+            <li><strong>Immortality</strong> - Second life for aggressive plays</li>
+        </ul>
+        
+        <div class="emblem-box">
+            <strong style="color: var(--primary);">Tank Emblem:</strong> Fortitude (HP) + Inspire (CD reduction). Talent: Tenacity for extra defense.
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Battle Spells</h2>
+        <ul>
+            <li><strong>Flicker</strong> - Escape after ult or reposition</li>
+            <li><strong>Vengeance</strong> - Counter burst damage in teamfights</li>
+            <li><strong>Sprint</strong> - Extra mobility for roaming</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Combo Guide</h2>
+        <div class="combo-step">1️⃣ <strong>Roaming Gank:</strong> Ult + Passenger → Drive to lane → Crash + S1 stun → S2 damage</div>
+        <div class="combo-step">2️⃣ <strong>Teamfight Initiate:</strong> Wait for enemy group → Ult crash multiple targets → S1 on carry → Tank damage</div>
+        <div class="combo-step">3️⃣ <strong>Peel Combo:</strong> S1 stun on diver → S2 enhanced attacks → Body block for carry</div>
+        
+        <div class="tip-box">
+            <p style="margin: 0;">Always check bushes before ulting. Communicate with passenger. Use mini-map to spot gank opportunities. Cancel ult if detected early.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Video Demos & Tutorials</h2>
+        <p style="font-size: 11px; color: #aaa; margin-bottom: 8px;">Click to watch combo demonstrations</p>
+        
+        <div style="display: grid; gap: 8px;">
+            <div style="background: linear-gradient(135deg, var(--dark), var(--darker)); border: 1px solid var(--secondary); border-radius: 6px; padding: 8px; cursor: pointer; transition: all 0.3s;" onclick="openVideo('basic-combo')">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <div style="width: 40px; height: 40px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">▶</div>
+                    <div style="flex: 1;">
+                        <div style="font-family: 'Orbitron', sans-serif; font-size: 11px; color: var(--primary); margin-bottom: 2px;">Basic Ult Combo</div>
+                        <div style="font-size: 10px; color: #888;">Drive → Crash → S1 Stun → S2 Follow-up</div>
+                    </div>
+                    <div style="font-size: 10px; color: #666;">2:15</div>
+                </div>
+            </div>
+            
+            <div style="background: linear-gradient(135deg, var(--dark), var(--darker)); border: 1px solid var(--secondary); border-radius: 6px; padding: 8px; cursor: pointer; transition: all 0.3s;" onclick="openVideo('advanced-drift')">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <div style="width: 40px; height: 40px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">▶</div>
+                    <div style="flex: 1;">
+                        <div style="font-family: 'Orbitron', sans-serif; font-size: 11px; color: var(--accent); margin-bottom: 2px;">Advanced Drift Technique</div>
+                        <div style="font-size: 10px; color: #888;">Multi-enemy crash angles & turn mastery</div>
+                    </div>
+                    <div style="font-size: 10px; color: #666;">3:42</div>
+                </div>
+            </div>
+            
+            <div style="background: linear-gradient(135deg, var(--dark), var(--darker)); border: 1px solid var(--secondary); border-radius: 6px; padding: 8px; cursor: pointer; transition: all 0.3s;" onclick="openVideo('map-routes')">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <div style="width: 40px; height: 40px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">▶</div>
+                    <div style="flex: 1;">
+                        <div style="font-family: 'Orbitron', sans-serif; font-size: 11px; color: var(--primary); margin-bottom: 2px;">Optimal Gank Routes</div>
+                        <div style="font-size: 10px; color: #888;">All lanes path demonstrations</div>
+                    </div>
+                    <div style="font-size: 10px; color: #666;">4:20</div>
+                </div>
+            </div>
+            
+            <div style="background: linear-gradient(135deg, var(--dark), var(--darker)); border: 1px solid var(--secondary); border-radius: 6px; padding: 8px; cursor: pointer; transition: all 0.3s;" onclick="openVideo('teamfight')">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <div style="width: 40px; height: 40px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">▶</div>
+                    <div style="flex: 1;">
+                        <div style="font-family: 'Orbitron', sans-serif; font-size: 11px; color: var(--accent); margin-bottom: 2px;">Teamfight Positioning</div>
+                        <div style="font-size: 10px; color: #888;">When to initiate vs peel guide</div>
+                    </div>
+                    <div style="font-size: 10px; color: #666;">5:10</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tip-box" style="margin-top: 8px;">
+            <p style="margin: 0;">🎥 Pro tip: Watch replays in slow-motion to learn timing. Save your best plays for analysis!</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Damage Calculator</h2>
+        <p style="font-size: 11px; color: #aaa; margin-bottom: 8px;">Compare build effectiveness</p>
+        
+        <div style="background: var(--darker); border: 1px solid var(--primary); border-radius: 6px; padding: 10px; margin-bottom: 8px;">
+            <div style="margin-bottom: 8px;">
+                <label style="font-size: 10px; color: var(--primary); display: block; margin-bottom: 4px;">Hero Level</label>
+                <input type="range" id="heroLevel" min="1" max="15" value="10" oninput="calculateDamage()" style="width: 100%; accent-color: var(--primary);">
+                <div style="text-align: center; font-family: 'Orbitron', sans-serif; color: var(--primary); font-size: 14px; margin-top: 4px;">Level <span id="levelDisplay">10</span></div>
+            </div>
+            
+            <div style="margin-bottom: 8px;">
+                <label style="font-size: 10px; color: var(--primary); display: block; margin-bottom: 4px;">Build Type</label>
+                <select id="buildType" onchange="calculateDamage()" style="width: 100%; background: var(--card-bg); color: #fff; border: 1px solid var(--secondary); padding: 6px; border-radius: 4px; font-size: 11px;">
+                    <option value="tank">Full Tank (Recommended)</option>
+                    <option value="hybrid">Hybrid Tank-Damage</option>
+                    <option value="damage">Full Damage (Troll Build)</option>
+                </select>
+            </div>
+            
+            <div style="background: rgba(0, 212, 255, 0.1); border-radius: 4px; padding: 8px; margin-top: 8px;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 11px;">
+                    <div>
+                        <div style="color: #888; font-size: 9px;">ULT CRASH DMG</div>
+                        <div style="color: var(--primary); font-family: 'Orbitron', sans-serif; font-size: 16px; font-weight: 700;" id="ultDamage">850</div>
+                    </div>
+                    <div>
+                        <div style="color: #888; font-size: 9px;">S1 STUN DMG</div>
+                        <div style="color: var(--primary); font-family: 'Orbitron', sans-serif; font-size: 16px; font-weight: 700;" id="s1Damage">420</div>
+                    </div>
+                    <div>
+                        <div style="color: #888; font-size: 9px;">TOTAL HP</div>
+                        <div style="color: #4ade80; font-family: 'Orbitron', sans-serif; font-size: 16px; font-weight: 700;" id="totalHP">5200</div>
+                    </div>
+                    <div>
+                        <div style="color: #888; font-size: 9px;">DURABILITY</div>
+                        <div style="color: #4ade80; font-family: 'Orbitron', sans-serif; font-size: 16px; font-weight: 700;" id="durability">92</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div style="background: var(--card-bg); border: 1px solid var(--secondary); border-radius: 6px; padding: 8px;">
+            <div style="font-size: 10px; color: var(--primary); margin-bottom: 6px; font-weight: 600;">BUILD COMPARISON</div>
+            <div style="font-size: 10px; line-height: 1.6; color: #ccc;" id="buildComparison">
+                Full Tank: High survivability, consistent CC, best for teamfights. Recommended for climbing ranks.
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Matchup Database</h2>
+        <p style="font-size: 11px; color: #aaa; margin-bottom: 8px;">How to handle specific enemies</p>
+        
+        <div style="display: grid; gap: 6px;">
+            <details style="background: var(--darker); border: 1px solid var(--secondary); border-radius: 6px; padding: 8px; cursor: pointer;">
+                <summary style="font-family: 'Orbitron', sans-serif; font-size: 11px; color: var(--primary); cursor: pointer; user-select: none;">vs. Khufra (Hard Counter) 🔴</summary>
+                <div style="margin-top: 6px; padding-top: 6px; border-top: 1px solid #333; font-size: 10px; line-height: 1.5;">
+                    <p><strong>Threat Level:</strong> Very High - He counters your ult completely</p>
+                    <p><strong>Strategy:</strong> Avoid ulting near him. Bait his S2 first. Focus on peeling instead of engaging. Build Dominance Ice to reduce his sustain.</p>
+                    <p><strong>Win Condition:</strong> Let team engage first, clean up after his skills are down.</p>
+                </div>
+            </details>
+            
+            <details style="background: var(--darker); border: 1px solid var(--secondary); border-radius: 6px; padding: 8px; cursor: pointer;">
+                <summary style="font-family: 'Orbitron', sans-serif; font-size: 11px; color: var(--primary); cursor: pointer; user-select: none;">vs. Minsitthar (Hard Counter) 🔴</summary>
+                <div style="margin-top: 6px; padding-top: 6px; border-top: 1px solid #333; font-size: 10px; line-height: 1.5;">
+                    <p><strong>Threat Level:</strong> Very High - Ult stops your transformation</p>
+                    <p><strong>Strategy:</strong> Wait for him to use ult on others. Never drive into his circle. Gank lanes he's not in.</p>
+                    <p><strong>Win Condition:</strong> Split map pressure, avoid direct confrontation.</p>
+                </div>
+            </details>
+            
+            <details style="background: var(--darker); border: 1px solid var(--secondary); border-radius: 6px; padding: 8px; cursor: pointer;">
+                <summary style="font-family: 'Orbitron', sans-serif; font-size: 11px; color: #4ade80; cursor: pointer; user-select: none;">vs. Layla (Easy) 🟢</summary>
+                <div style="margin-top: 6px; padding-top: 6px; border-top: 1px solid #333; font-size: 10px; line-height: 1.5;">
+                    <p><strong>Threat Level:</strong> Low - No escape, easy target</p>
+                    <p><strong>Strategy:</strong> Ult gank repeatedly. She can't escape your crash. Build Blade Armor if she's fed.</p>
+                    <p><strong>Win Condition:</strong> Keep her shut down early, end game before late.</p>
+                </div>
+            </details>
+            
+            <details style="background: var(--darker); border: 1px solid var(--secondary); border-radius: 6px; padding: 8px; cursor: pointer;">
+                <summary style="font-family: 'Orbitron', sans-serif; font-size: 11px; color: #fbbf24; cursor: pointer; user-select: none;">vs. Fanny (Medium) 🟡</summary>
+                <div style="margin-top: 6px; padding-top: 6px; border-top: 1px solid #333; font-size: 10px; line-height: 1.5;">
+                    <p><strong>Threat Level:</strong> Medium - High mobility but predictable</p>
+                    <p><strong>Strategy:</strong> Ult when she's low on energy. S1 stun interrupts her cables. Protect your buffs early game.</p>
+                    <p><strong>Win Condition:</strong> Deny her blue buff, crash her during jungle rotations.</p>
+                </div>
+            </details>
+            
+            <details style="background: var(--darker); border: 1px solid var(--secondary); border-radius: 6px; padding: 8px; cursor: pointer;">
+                <summary style="font-family: 'Orbitron', sans-serif; font-size: 11px; color: #4ade80; cursor: pointer; user-select: none;">vs. Cyclops (Easy) 🟢</summary>
+                <div style="margin-top: 6px; padding-top: 6px; border-top: 1px solid #333; font-size: 10px; line-height: 1.5;">
+                    <p><strong>Threat Level:</strong> Low - Squishy, no escape</p>
+                    <p><strong>Strategy:</strong> Crash from unexpected angles. Rush Athena's Shield. Absorb his ult with your passive shield.</p>
+                    <p><strong>Win Condition:</strong> Target him first in teamfights, easy kill.</p>
+                </div>
+            </details>
+            
+            <details style="background: var(--darker); border: 1px solid var(--secondary); border-radius: 6px; padding: 8px; cursor: pointer;">
+                <summary style="font-family: 'Orbitron', sans-serif; font-size: 11px; color: #f87171; cursor: pointer; user-select: none;">vs. Karrie (Hard) 🔴</summary>
+                <div style="margin-top: 6px; padding-top: 6px; border-top: 1px solid #333; font-size: 10px; line-height: 1.5;">
+                    <p><strong>Threat Level:</strong> High - True damage melts tanks</p>
+                    <p><strong>Strategy:</strong> Don't tank her alone. Crash to disrupt positioning. Let assassins handle her. Build Antique Cuirass to reduce damage.</p>
+                    <p><strong>Win Condition:</strong> Lock her down with CC chain, team focus fire.</p>
+                </div>
+            </details>
+        </div>
+        
+        <div class="tip-box" style="margin-top: 8px;">
+            <p style="margin: 0;">📊 Click each matchup for detailed strategy. Practice makes perfect - learn these patterns!</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>2026 Meta Updates</h2>
+        <div style="background: linear-gradient(135deg, rgba(255, 51, 102, 0.15), rgba(255, 51, 102, 0.05)); border: 1px solid var(--accent); border-radius: 6px; padding: 10px; margin-bottom: 8px;">
+            <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 6px;">
+                <span style="font-size: 16px;">🆕</span>
+                <span style="font-family: 'Orbitron', sans-serif; font-size: 11px; color: var(--accent); font-weight: 700;">LATEST PATCH NOTES</span>
+            </div>
+            <div style="font-size: 10px; color: #ccc; line-height: 1.5;">
+                <strong>Patch 1.8.54 (Jan 2026):</strong> Johnson received buffs to base HP (+80) and S1 stun duration (+0.2s). Ultimate cooldown reduced at all levels. Now S-tier tank in current meta!
+            </div>
+        </div>
+        
+        <h3>Recent Changes</h3>
+        <div style="display: grid; gap: 6px;">
+            <div style="background: rgba(74, 222, 128, 0.1); border-left: 3px solid #4ade80; padding: 6px 8px; border-radius: 3px; font-size: 11px;">
+                <strong style="color: #4ade80;">BUFF:</strong> Ultimate cooldown: 50/45/40s → 45/38/32s
+            </div>
+            <div style="background: rgba(74, 222, 128, 0.1); border-left: 3px solid #4ade80; padding: 6px 8px; border-radius: 3px; font-size: 11px;">
+                <strong style="color: #4ade80;">BUFF:</strong> Base HP increased from 2580 → 2660
+            </div>
+            <div style="background: rgba(74, 222, 128, 0.1); border-left: 3px solid #4ade80; padding: 6px 8px; border-radius: 3px; font-size: 11px;">
+                <strong style="color: #4ade80;">BUFF:</strong> S1 stun duration: 0.8s → 1.0s (max level)
+            </div>
+            <div style="background: rgba(248, 113, 113, 0.1); border-left: 3px solid #f87171; padding: 6px 8px; border-radius: 3px; font-size: 11px;">
+                <strong style="color: #f87171;">NERF:</strong> Passive shield: 50% max HP → 45% max HP
+            </div>
+        </div>
+        
+        <h3 style="margin-top: 10px;">Current Meta Position</h3>
+        <div style="background: var(--darker); border: 1px solid var(--primary); border-radius: 6px; padding: 8px;">
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; text-align: center;">
+                <div>
+                    <div style="font-size: 9px; color: #888;">PICK RATE</div>
+                    <div style="font-family: 'Orbitron', sans-serif; font-size: 18px; color: var(--primary); font-weight: 700;">18.4%</div>
+                    <div style="font-size: 9px; color: #4ade80;">↑ 3.2%</div>
+                </div>
+                <div>
+                    <div style="font-size: 9px; color: #888;">WIN RATE</div>
+                    <div style="font-family: 'Orbitron', sans-serif; font-size: 18px; color: var(--primary); font-weight: 700;">52.7%</div>
+                    <div style="font-size: 9px; color: #4ade80;">↑ 1.8%</div>
+                </div>
+                <div>
+                    <div style="font-size: 9px; color: #888;">BAN RATE</div>
+                    <div style="font-family: 'Orbitron', sans-serif; font-size: 18px; color: var(--primary); font-weight: 700;">22.1%</div>
+                    <div style="font-size: 9px; color: #4ade80;">↑ 5.4%</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="emblem-box" style="margin-top: 8px;">
+            <strong style="color: var(--primary);">Tier List:</strong> S-Tier tank in January 2026. Excellent for solo queue and team play. High impact across all ranks.
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Gameplay Tips</h2>
+        <h3>Early Game (1-7)</h3>
+        <ul>
+            <li>Secure buffs for your jungler</li>
+            <li>Rotate between lanes constantly</li>
+            <li>Ult to mid/gold lane for ganks every 40s</li>
+            <li>Place vision on enemy buff</li>
+        </ul>
+        
+        <h3>Mid Game (8-12)</h3>
+        <ul>
+            <li>Coordinate ult ganks with team</li>
+            <li>Protect turrets, initiate when numbers advantage</li>
+            <li>Farm jungle camps when lanes pushed</li>
+            <li>Set up Turtle/Lord with vision control</li>
+        </ul>
+        
+        <h3>Late Game (13+)</h3>
+        <ul>
+            <li>Never initiate alone - wait for team</li>
+            <li>Ult to catch out-of-position enemies</li>
+            <li>Body block key abilities for carries</li>
+            <li>Prioritize Lord control for push</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Counters & Synergies</h2>
+        <h3>Strong Against</h3>
+        <div class="counter-grid">
+            <div class="counter-card strong">Marksmen (Layla, Miya)</div>
+            <div class="counter-card strong">Low mobility mages</div>
+            <div class="counter-card strong">Fragile assassins</div>
+            <div class="counter-card strong">Split-pushers</div>
+        </div>
+        
+        <h3>Weak Against</h3>
+        <div class="counter-grid">
+            <div class="counter-card weak">True damage (Karrie)</div>
+            <div class="counter-card weak">Heavy CC (Aurora)</div>
+            <div class="counter-card weak">Anti-heal (Curse Helmet)</div>
+            <div class="counter-card weak">High burst (Eudora)</div>
+        </div>
+        
+        <h3>Best Teammates</h3>
+        <ul>
+            <li><strong>Franco</strong> - Hook into Johnson crash combo</li>
+            <li><strong>Odette</strong> - Carry into teamfight for ult</li>
+            <li><strong>Aldous</strong> - Transport for global pressure</li>
+            <li><strong>Any Marksman</strong> - Protect and enable</li>
+        </ul>
+    </div>
+
+    </div>
+
+    </div>
+
+    <div class="section">
+        <h2>Rank-Specific Strategies</h2>
+        <p style="font-size: 11px; color: #aaa; margin-bottom: 8px;">Adapt playstyle to your rank</p>
+        
+        <details style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(139, 92, 246, 0.05)); border: 1px solid #8b5cf6; border-radius: 6px; padding: 10px; margin-bottom: 8px; cursor: pointer;">
+            <summary style="font-family: 'Orbitron', sans-serif; font-size: 12px; color: #8b5cf6; cursor: pointer; user-select: none; font-weight: 700;">🥉 EPIC RANK (GM-Epic)</summary>
+            <div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(139, 92, 246, 0.3);">
+                <h4 style="font-size: 11px; color: var(--primary); margin: 6px 0 4px 0;">Key Focus: Carry Games Solo</h4>
+                <ul style="font-size: 10px; line-height: 1.6;">
+                    <li><strong>Gank relentlessly:</strong> Epic players overextend constantly. Punish them. Ult every 40s to different lanes.</li>
+                    <li><strong>Simple combos:</strong> Basic crash + S1 is enough. No fancy plays needed. Consistency > flashy.</li>
+                    <li><strong>Ignore chat toxicity:</strong> Mute if needed. Focus on your game. Don't tilt.</li>
+                    <li><strong>Farm aggressively:</strong> Take jungle when jungler isn't using it. Get items fast.</li>
+                    <li><strong>Passenger priority:</strong> Take whoever pings. Epic players usually don't coordinate well anyway.</li>
+                </ul>
+                <div class="tip-box" style="margin-top: 6px;">
+                    <p style="margin: 0; font-size: 10px;">Epic = chaos. Be the stable factor. Ward enemy buffs, secure objectives, never give up. Comebacks happen all the time!</p>
+                </div>
+            </div>
+        </details>
+        
+        <details style="background: linear-gradient(135deg, rgba(251, 191, 36, 0.15), rgba(251, 191, 36, 0.05)); border: 1px solid #fbbf24; border-radius: 6px; padding: 10px; margin-bottom: 8px; cursor: pointer;">
+            <summary style="font-family: 'Orbitron', sans-serif; font-size: 12px; color: #fbbf24; cursor: pointer; user-select: none; font-weight: 700;">🥈 LEGEND RANK</summary>
+            <div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(251, 191, 36, 0.3);">
+                <h4 style="font-size: 11px; color: var(--primary); margin: 6px 0 4px 0;">Key Focus: Team Coordination</h4>
+                <ul style="font-size: 10px; line-height: 1.6;">
+                    <li><strong>Communicate heavily:</strong> Ping before every ult. Legend players respond to good calls.</li>
+                    <li><strong>Time objectives:</strong> Be at Turtle/Lord 30s before spawn. Control vision.</li>
+                    <li><strong>Counter-pick awareness:</strong> If enemy has Khufra/Minsitthar, play safer. Don't force ults.</li>
+                    <li><strong>Passenger synergy:</strong> Prioritize Odette/Aurora. Legend burst mages know how to follow up.</li>
+                    <li><strong>Map pressure:</strong> After successful gank, immediately rotate to objective or another lane.</li>
+                </ul>
+                <div class="tip-box" style="margin-top: 6px;">
+                    <p style="margin: 0; font-size: 10px;">Legend = coordinated but inconsistent. Be the shotcaller. One good ult wins teamfights. Track enemy ults!</p>
+                </div>
+            </div>
+        </details>
+        
+        <details style="background: linear-gradient(135deg, rgba(236, 72, 153, 0.15), rgba(236, 72, 153, 0.05)); border: 1px solid #ec4899; border-radius: 6px; padding: 10px; margin-bottom: 8px; cursor: pointer;">
+            <summary style="font-family: 'Orbitron', sans-serif; font-size: 12px; color: #ec4899; cursor: pointer; user-select: none; font-weight: 700;">🥇 MYTHIC RANK</summary>
+            <div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(236, 72, 153, 0.3);">
+                <h4 style="font-size: 11px; color: var(--primary); margin: 6px 0 4px 0;">Key Focus: Macro Play & Mind Games</h4>
+                <ul style="font-size: 10px; line-height: 1.6;">
+                    <li><strong>Bait ults:</strong> Drive toward enemy, make them waste Flicker/skills, cancel ult. Then re-engage.</li>
+                    <li><strong>Vision warfare:</strong> Place wards aggressively. Deny enemy vision. Control information.</li>
+                    <li><strong>Fake rotations:</strong> Show on map in one lane, ult to opposite lane. Misdirection wins.</li>
+                    <li><strong>Counter-macro:</strong> If enemy split-pushes, ult across map instantly. Punish greed.</li>
+                    <li><strong>Late game patience:</strong> Mythic players don't throw. Wait for ONE mistake, capitalize with perfect ult.</li>
+                </ul>
+                <div class="tip-box" style="margin-top: 6px;">
+                    <p style="margin: 0; font-size: 10px;">Mythic = mental warfare. Every ult matters. One bad crash loses game. Master ult cancels, study enemy patterns, outthink them!</p>
+                </div>
+            </div>
+        </details>
+        
+        <details style="background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(239, 68, 68, 0.05)); border: 1px solid #ef4444; border-radius: 6px; padding: 10px; cursor: pointer;">
+            <summary style="font-family: 'Orbitron', sans-serif; font-size: 12px; color: #ef4444; cursor: pointer; user-select: none; font-weight: 700;">👑 MYTHICAL GLORY / MG</summary>
+            <div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(239, 68, 68, 0.3);">
+                <h4 style="font-size: 11px; color: var(--primary); margin: 6px 0 4px 0;">Key Focus: Team Synergy & Meta Adaptation</h4>
+                <ul style="font-size: 10px; line-height: 1.6;">
+                    <li><strong>Draft phase mastery:</strong> Communicate passenger needs in lobby. Ensure team comp works.</li>
+                    <li><strong>Scrim-level coordination:</strong> Practice ult combos with regular team. Voice chat mandatory.</li>
+                    <li><strong>Counter-strategy:</strong> If banned/countered, have backup heroes. Don't one-trick Johnson.</li>
+                    <li><strong>Pro-level mechanics:</strong> Frame-perfect Flicker-extends, pixel-perfect crashes, advanced drifts.</li>
+                    <li><strong>VOD review:</strong> Record games, analyze mistakes. Learn from top global Johnson players.</li>
+                </ul>
+                <div class="tip-box" style="margin-top: 6px;">
+                    <p style="margin: 0; font-size: 10px;">MG = esports level. Every player knows meta. Innovation required. Master ALL advanced techniques. Consistency = top 100!</p>
+                </div>
+            </div>
+        </details>
+    </div>
+
+    <div class="section">
+        <h2>Quick Reference Card</h2>
+        <div style="background: linear-gradient(135deg, var(--card-bg), var(--darker)); border: 2px solid var(--primary); border-radius: 8px; padding: 10px; box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);">
+            <div style="text-align: center; font-family: 'Orbitron', sans-serif; font-size: 12px; color: var(--primary); margin-bottom: 8px; font-weight: 700;">⚡ EMERGENCY CHEAT SHEET ⚡</div>
+            
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; margin-bottom: 8px;">
+                <div style="background: rgba(0, 212, 255, 0.1); border-radius: 4px; padding: 6px; text-align: center;">
+                    <div style="font-size: 9px; color: #888;">SKILL ORDER</div>
+                    <div style="font-size: 11px; color: var(--primary); font-weight: 700;">S1→S2→S1→ULT</div>
+                </div>
+                <div style="background: rgba(0, 212, 255, 0.1); border-radius: 4px; padding: 6px; text-align: center;">
+                    <div style="font-size: 9px; color: #888;">PRIORITY MAX</div>
+                    <div style="font-size: 11px; color: var(--primary); font-weight: 700;">ULT > S1 > S2</div>
+                </div>
+                <div style="background: rgba(74, 222, 128, 0.1); border-radius: 4px; padding: 6px; text-align: center;">
+                    <div style="font-size: 9px; color: #888;">BEST SPELL</div>
+                    <div style="font-size: 11px; color: #4ade80; font-weight: 700;">FLICKER</div>
+                </div>
+                <div style="background: rgba(74, 222, 128, 0.1); border-radius: 4px; padding: 6px; text-align: center;">
+                    <div style="font-size: 9px; color: #888;">EMBLEM</div>
+                    <div style="font-size: 11px; color: #4ade80; font-weight: 700;">TANK/TENACITY</div>
+                </div>
+            </div>
+            
+            <div style="background: var(--darker); border-radius: 6px; padding: 8px; margin-bottom: 8px;">
+                <div style="font-size: 10px; color: var(--primary); margin-bottom: 4px; font-weight: 600;">⚔️ CORE COMBO</div>
+                <div style="font-size: 10px; color: #ccc; line-height: 1.5;">Ping Ult Ready → Get Passenger → Drive Hidden Path → S2 Active → Crash 2+ Enemies → S1 Stun Priority Target → Team Wipe</div>
+            </div>
+            
+            <div style="background: var(--darker); border-radius: 6px; padding: 8px; margin-bottom: 8px;">
+                <div style="font-size: 10px; color: var(--accent); margin-bottom: 4px; font-weight: 600;">🚫 NEVER DO</div>
+                <div style="font-size: 9px; color: #ccc; line-height: 1.4;">Ult alone • Predictable routes • Face-check bushes • Ignore map • Crash into 5 enemies • Forget S2 • Leave carry alone</div>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px;">
+                <div style="background: rgba(248, 113, 113, 0.1); border-radius: 4px; padding: 4px; text-align: center;">
+                    <div style="font-size: 8px; color: #888;">HARD COUNTER</div>
+                    <div style="font-size: 9px; color: #f87171; font-weight: 600;">Khufra</div>
+                </div>
+                <div style="background: rgba(74, 222, 128, 0.1); border-radius: 4px; padding: 4px; text-align: center;">
+                    <div style="font-size: 8px; color: #888;">BEST PASSENGER</div>
+                    <div style="font-size: 9px; color: #4ade80; font-weight: 600;">Odette</div>
+                </div>
+                <div style="background: rgba(251, 191, 36, 0.1); border-radius: 4px; padding: 4px; text-align: center;">
+                    <div style="font-size: 8px; color: #888;">ULT CD</div>
+                    <div style="font-size: 9px; color: #fbbf24; font-weight: 600;">32-45s</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Situational Item Adjustments</h2>
+        <p style="font-size: 11px; color: #aaa; margin-bottom: 8px;">Adapt build based on enemy team</p>
+        
+        <h3>🔄 Core Build Swaps</h3>
+        <div style="display: grid; gap: 6px; margin: 8px 0;">
+            <div style="background: var(--darker); border: 1px solid var(--secondary); border-radius: 6px; padding: 8px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                    <span style="font-size: 11px; color: var(--primary); font-weight: 600;">vs. Heavy Physical Damage</span>
+                    <span style="font-size: 9px; color: #4ade80;">PRIORITY</span>
+                </div>
+                <div style="font-size: 10px; color: #ccc; line-height: 1.4;">
+                    <strong>Replace:</strong> Athena's Shield<br>
+                    <strong>With:</strong> Blade Armor (reflects damage) or Antique Cuirass (reduces attack)<br>
+                    <strong>When:</strong> 3+ physical damage dealers or fed MM
+                </div>
+            </div>
+            
+            <div style="background: var(--darker); border: 1px solid var(--secondary); border-radius: 6px; padding: 8px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                    <span style="font-size: 11px; color: var(--primary); font-weight: 600;">vs. Heavy Magical Damage</span>
+                    <span style="font-size: 9px; color: #4ade80;">PRIORITY</span>
+                </div>
+                <div style="font-size: 10px; color: #ccc; line-height: 1.4;">
+                    <strong>Replace:</strong> Dominance Ice<br>
+                    <strong>With:</strong> Radiant Armor (stacking magic def) or Oracle (shield + regen)<br>
+                    <strong>When:</strong> 3+ magic dealers or burst mages dominating
+                </div>
+            </div>
+            
+            <div style="background: var(--darker); border: 1px solid var(--secondary); border-radius: 6px; padding: 8px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                    <span style="font-size: 11px; color: var(--primary); font-weight: 600;">vs. Sustain/Regen Comps</span>
+                    <span style="font-size: 9px; color: #fbbf24;">SITUATIONAL</span>
+                </div>
+                <div style="font-size: 10px; color: #ccc; line-height: 1.4;">
+                    <strong>Add:</strong> Necklace of Durance (magic + anti-heal) or Sea Halberd (physical + anti-heal)<br>
+                    <strong>When:</strong> Enemies have Estes, Uranus, Esmeralda, or lifesteal stackers<br>
+                    <strong>Replace:</strong> Immortality (if needed earlier)
+                </div>
+            </div>
+            
+            <div style="background: var(--darker); border: 1px solid var(--secondary); border-radius: 6px; padding: 8px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                    <span style="font-size: 11px; color: var(--primary); font-weight: 600;">vs. Heavy CC Teams</span>
+                    <span style="font-size: 9px; color: #f87171;">CRITICAL</span>
+                </div>
+                <div style="font-size: 10px; color: #ccc; line-height: 1.4;">
+                    <strong>Keep:</strong> Tough Boots (mandatory!)<br>
+                    <strong>Add:</strong> Oracle (shield boost) + earlier Immortality<br>
+                    <strong>When:</strong> Aurora, Tigreal, Chou, Khufra, Franco on enemy team
+                </div>
+            </div>
+            
+            <div style="background: var(--darker); border: 1px solid var(--secondary); border-radius: 6px; padding: 8px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                    <span style="font-size: 11px; color: var(--primary); font-weight: 600;">vs. True Damage Dealers</span>
+                    <span style="font-size: 9px; color: #f87171;">HIGH THREAT</span>
+                </div>
+                <div style="font-size: 10px; color: #ccc; line-height: 1.4;">
+                    <strong>Stack HP:</strong> Replace damage items with Thunder Belt, Twilight Armor<br>
+                    <strong>When:</strong> Karrie, Irithel, Claude with demon hunter sword<br>
+                    <strong>Note:</strong> Defense doesn't help vs true damage, only raw HP
+                </div>
+            </div>
+        </div>
+        
+        <h3>💎 Late Game Luxury Items</h3>
+        <ul style="font-size: 10px; line-height: 1.6;">
+            <li><strong>Immortality → Wind of Nature:</strong> If enemy burst is predictable, active invincibility better</li>
+            <li><strong>Add Guardian Helmet:</strong> After full build, for insane HP regen between fights</li>
+            <li><strong>Swap Cursed Helmet → Brute Force:</strong> If you need more mobility/chase potential</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Team Composition Roles</h2>
+        <p style="font-size: 11px; color: #aaa; margin-bottom: 8px;">How Johnson fits different team strategies</p>
+        
+        <div style="display: grid; gap: 8px;">
+            <div style="background: linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(0, 102, 255, 0.1)); border-left: 4px solid var(--primary); border-radius: 6px; padding: 10px;">
+                <div style="font-family: 'Orbitron', sans-serif; font-size: 11px; color: var(--primary); margin-bottom: 4px; font-weight: 700;">🎯 PICK COMP (Assassin Heavy)</div>
+                <div style="font-size: 10px; line-height: 1.5; margin-bottom: 6px;">
+                    <strong>Team:</strong> Johnson, Gusion/Lancelot, Burst Mage, MM, Offlaner<br>
+                    <strong>Role:</strong> Delivery service for assassin. Crash → Assassin deletes target → Retreat<br>
+                    <strong>Win Condition:</strong> Pick off isolated enemies. Snowball gold lead. End before late game.
+                </div>
+                <div style="font-size: 9px; color: #888; font-style: italic;">Best for: Aggressive early game teams, high mechanical skill players</div>
+            </div>
+            
+            <div style="background: linear-gradient(135deg, rgba(74, 222, 128, 0.15), rgba(74, 222, 128, 0.1)); border-left: 4px solid #4ade80; border-radius: 6px; padding: 10px;">
+                <div style="font-family: 'Orbitron', sans-serif; font-size: 11px; color: #4ade80; margin-bottom: 4px; font-weight: 700;">⚔️ TEAMFIGHT COMP (AoE Heavy)</div>
+                <div style="font-size: 10px; line-height: 1.5; margin-bottom: 6px;">
+                    <strong>Team:</strong> Johnson, Odette/Aurora, Vale/Pharsa, Tank MM, Fighter<br>
+                    <strong>Role:</strong> Primary engage. Crash 3+ enemies → Passenger AoE ult → Team wipes<br>
+                    <strong>Win Condition:</strong> Win every teamfight 5v5. Control objectives. Group and win.
+                </div>
+                <div style="font-size: 9px; color: #888; font-style: italic;">Best for: Mid-game focused, coordinated teams, Mythic+ rank</div>
+            </div>
+            
+            <div style="background: linear-gradient(135deg, rgba(251, 191, 36, 0.15), rgba(251, 191, 36, 0.1)); border-left: 4px solid #fbbf24; border-radius: 6px; padding: 10px;">
+                <div style="font-family: 'Orbitron', sans-serif; font-size: 11px; color: #fbbf24; margin-bottom: 4px; font-weight: 700;">🛡️ POKE & SIEGE COMP</div>
+                <div style="font-size: 10px; line-height: 1.5; margin-bottom: 6px;">
+                    <strong>Team:</strong> Johnson, Long-range MM, Poke Mage, Support, Poke Fighter<br>
+                    <strong>Role:</strong> Counter-engage defender. Protect backline from divers. Peel not engage.<br>
+                    <strong>Win Condition:</strong> Slow push with poke. Johnson stops enemy engage. Late game win.
+                </div>
+                <div style="font-size: 9px; color: #888; font-style: italic;">Best for: Patient teams, protecting hyper-carries, turtle strategy</div>
+            </div>
+            
+            <div style="background: linear-gradient(135deg, rgba(236, 72, 153, 0.15), rgba(236, 72, 153, 0.1)); border-left: 4px solid #ec4899; border-radius: 6px; padding: 10px;">
+                <div style="font-family: 'Orbitron', sans-serif; font-size: 11px; color: #ec4899; margin-bottom: 4px; font-weight: 700;">⚡ SPLIT-PUSH COUNTER COMP</div>
+                <div style="font-size: 10px; line-height: 1.5; margin-bottom: 6px;">
+                    <strong>Team:</strong> Johnson, Global ult hero (Aldous/Hanzo), CC Support, Flex, Flex<br>
+                    <strong>Role:</strong> Global pressure. Instantly punish enemy split-push with cross-map ult<br>
+                    <strong>Win Condition:</strong> Deny enemy map control. Force 5v5. Catch split-pushers repeatedly.
+                </div>
+                <div style="font-size: 9px; color: #888; font-style: italic;">Best for: Map awareness teams, countering Fanny/Zilong/Sun split comps</div>
+            </div>
+        </div>
+        
+        <div class="tip-box" style="margin-top: 8px;">
+            <p style="margin: 0;">🎮 Communicate team comp in draft! If team picks 3 tanks, Johnson loses value. Need burst damage to capitalize on your engages!</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Positioning Guide</h2>
+        <p style="font-size: 11px; color: #aaa; margin-bottom: 8px;">Where to stand in different scenarios</p>
+        
+        <h3>🎯 Teamfight Positions</h3>
+        <div style="display: grid; gap: 8px; margin-bottom: 10px;">
+            <div style="background: linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(0, 102, 255, 0.1)); border: 1px solid var(--primary); border-radius: 6px; padding: 10px;">
+                <div style="font-family: 'Orbitron', sans-serif; font-size: 11px; color: var(--primary); margin-bottom: 4px; font-weight: 600;">FRONTLINE INITIATOR</div>
+                <p style="font-size: 10px; margin: 0; line-height: 1.5;">Position: 2-3 car lengths ahead of team. Wait for 3+ enemies grouped. Ult crash into backline carries. Your team follows up immediately. Best when you have numbers advantage (5v4 or 5v3).</p>
+            </div>
+            
+            <div style="background: linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(0, 102, 255, 0.1)); border: 1px solid var(--primary); border-radius: 6px; padding: 10px;">
+                <div style="font-family: 'Orbitron', sans-serif; font-size: 11px; color: var(--primary); margin-bottom: 4px; font-weight: 600;">BACKLINE PEELER</div>
+                <p style="font-size: 10px; margin: 0; line-height: 1.5;">Position: Between carry and enemy divers. Save S1 stun for assassins jumping your MM/Mage. Don't ult unless to escape or counter-engage. Use body blocking to absorb skill shots.</p>
+            </div>
+            
+            <div style="background: linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(0, 102, 255, 0.1)); border: 1px solid var(--primary); border-radius: 6px; padding: 10px;">
+                <div style="font-family: 'Orbitron', sans-serif; font-size: 11px; color: var(--primary); margin-bottom: 4px; font-weight: 600;">FLANKING AMBUSHER</div>
+                <p style="font-size: 10px; margin: 0; line-height: 1.5;">Position: In bush near teamfight area. Let teams engage first. Ult from side/behind to catch enemy carries off-guard. Works best with Odette/Aurora passenger for instant wipe.</p>
+            </div>
+        </div>
+        
+        <h3>📍 Lane Positioning</h3>
+        <ul>
+            <li><strong>Early Game (Roaming):</strong> Stay in river, between all 3 lanes. React to whichever lane needs help. Don't stay in one lane too long.</li>
+            <li><strong>Laning Phase:</strong> Position behind minions to avoid poke. Step forward only for S1 stun when enemy overextends.</li>
+            <li><strong>Tower Defense:</strong> Stand at tower edge, S1 stun enemies that dive. Don't chase - let them come to you.</li>
+            <li><strong>Tower Siege:</strong> Tank tower shots ONLY after minion wave arrives. Ult away if low HP, don't die for tower.</li>
+        </ul>
+        
+        <h3>🎮 Objective Positioning</h3>
+        <div class="combo-step" style="background: rgba(255, 51, 102, 0.1); border-left: 2px solid var(--accent);">
+            <strong>Lord/Turtle:</strong> Stand at pit entrance. Face enemy jungle path. Ult incoming enemies before they reach pit. Don't stand IN pit - you'll get trapped.
+        </div>
+        
+        <div class="tip-box">
+            <p style="margin: 0;">⚠️ NEVER position yourself where you can't see the map! Always check minimap every 3-5 seconds. Bad positioning = free kill for enemy.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Ult Cancellation Guide</h2>
+        <p style="font-size: 11px; color: #aaa; margin-bottom: 8px;">When to abort the drive</p>
+        
+        <h3>🚨 CANCEL IMMEDIATELY IF:</h3>
+        <div style="display: grid; gap: 6px; margin: 8px 0;">
+            <div style="background: rgba(248, 113, 113, 0.15); border-left: 3px solid #f87171; padding: 6px 8px; border-radius: 3px; font-size: 11px;">
+                ❌ <strong>Khufra/Minsitthar spotted</strong> - They counter your ult completely
+            </div>
+            <div style="background: rgba(248, 113, 113, 0.15); border-left: 3px solid #f87171; padding: 6px 8px; border-radius: 3px; font-size: 11px;">
+                ❌ <strong>All 5 enemies visible</strong> - You're driving into 5v2, suicide mission
+            </div>
+            <div style="background: rgba(248, 113, 113, 0.15); border-left: 3px solid #f87171; padding: 6px 8px; border-radius: 3px; font-size: 11px;">
+                ❌ <strong>Enemy retreated to base</strong> - Wasted ult, cooldown for nothing
+            </div>
+            <div style="background: rgba(248, 113, 113, 0.15); border-left: 3px solid #f87171; padding: 6px 8px; border-radius: 3px; font-size: 11px;">
+                ❌ <strong>Your team recalled/dead</strong> - No follow-up damage = you die alone
+            </div>
+            <div style="background: rgba(248, 113, 113, 0.15); border-left: 3px solid #f87171; padding: 6px 8px; border-radius: 3px; font-size: 11px;">
+                ❌ <strong>Objective spawning in 10s</strong> - Save ult for Lord/Turtle fight
+            </div>
+        </div>
+        
+        <h3>⚠️ CONSIDER CANCELING IF:</h3>
+        <ul>
+            <li>Enemy has 3+ hard CC ready (Aurora ult, Tigreal ult, etc.)</li>
+            <li>You're driving through 3+ enemy wards (they know you're coming)</li>
+            <li>Target flashed/blinked away to safety</li>
+            <li>Better gank opportunity appeared elsewhere</li>
+            <li>Your carry pinged retreat/danger</li>
+        </ul>
+        
+        <h3>✅ COMMIT TO CRASH IF:</h3>
+        <div style="display: grid; gap: 6px; margin: 8px 0;">
+            <div style="background: rgba(74, 222, 128, 0.15); border-left: 3px solid #4ade80; padding: 6px 8px; border-radius: 3px; font-size: 11px;">
+                ✓ <strong>2+ enemies grouped</strong> - Multi-stun = teamfight won
+            </div>
+            <div style="background: rgba(74, 222, 128, 0.15); border-left: 3px solid #4ade80; padding: 6px 8px; border-radius: 3px; font-size: 11px;">
+                ✓ <strong>Enemy carry isolated</strong> - Free kill, swing gold advantage
+            </div>
+            <div style="background: rgba(74, 222, 128, 0.15); border-left: 3px solid #4ade80; padding: 6px 8px; border-radius: 3px; font-size: 11px;">
+                ✓ <strong>Numbers advantage</strong> - 5v3 or better, you can't lose
+            </div>
+            <div style="background: rgba(74, 222, 128, 0.15); border-left: 3px solid #4ade80; padding: 6px 8px; border-radius: 3px; font-size: 11px;">
+                ✓ <strong>Carrying Odette/Aurora</strong> - Guaranteed team wipe
+            </div>
+        </ul>
+        
+        <div class="emblem-box">
+            <strong style="color: var(--primary);">Pro Tip:</strong> Press brake button (attack/skill) to cancel ult. Cooldown is only 50% if cancelled early. Practice cancel timing in Practice Mode!
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Communication Guide</h2>
+        <p style="font-size: 11px; color: #aaa; margin-bottom: 8px;">Quick chat for coordination</p>
+        
+        <h3>📱 Essential Pings</h3>
+        <div style="display: grid; gap: 6px; margin: 8px 0;">
+            <div style="background: var(--darker); border: 1px solid var(--secondary); border-radius: 6px; padding: 8px;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <div style="width: 30px; height: 30px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px;">🚗</div>
+                    <div style="flex: 1;">
+                        <div style="font-size: 11px; color: var(--primary); font-weight: 600;">"Ultimate Ready!"</div>
+                        <div style="font-size: 10px; color: #888;">Use BEFORE driving. Tells team to prepare follow-up</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="background: var(--darker); border: 1px solid var(--secondary); border-radius: 6px; padding: 8px;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <div style="width: 30px; height: 30px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px;">⚠️</div>
+                    <div style="flex: 1;">
+                        <div style="font-size: 11px; color: var(--accent); font-weight: 600;">"Attack!" (Target Enemy)</div>
+                        <div style="font-size: 10px; color: #888;">Ping who you're about to crash. Team focuses that target</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="background: var(--darker); border: 1px solid var(--secondary); border-radius: 6px; padding: 8px;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <div style="width: 30px; height: 30px; background: #4ade80; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px;">📍</div>
+                    <div style="flex: 1;">
+                        <div style="font-size: 11px; color: #4ade80; font-weight: 600;">"Gather Here!"</div>
+                        <div style="font-size: 10px; color: #888;">Before objectives. Team groups for coordinated ult</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <h3>💬 Quick Chat Messages</h3>
+        <ul>
+            <li><strong>"Get in car!"</strong> - Passive ready, drive to passenger, spam this</li>
+            <li><strong>"Initiate retreat!"</strong> - Cancel ult, abort mission</li>
+            <li><strong>"Request backup!"</strong> - Need team presence before you ult</li>
+            <li><strong>"Split push!"</strong> - When you're ulting to gank split-pusher</li>
+            <li><strong>"Well played!"</strong> - After successful crash combo</li>
+        </ul>
+        
+        <h3>🎯 Passenger Communication</h3>
+        <div class="combo-step" style="background: rgba(0, 212, 255, 0.1); border-left: 2px solid var(--primary);">
+            <strong>Before Departure:</strong> Ping "Ultimate Ready" + Passenger location + Target enemy. Wait 2 seconds for passenger to position. Then drive.
+        </div>
+        
+        <div class="combo-step" style="background: rgba(0, 212, 255, 0.1); border-left: 2px solid var(--primary);">
+            <strong>During Drive:</strong> Passenger should ping target/direction. Driver follows passenger's calls. Trust your passenger!
+        </div>
+        
+        <div class="combo-step" style="background: rgba(0, 212, 255, 0.1); border-left: 2px solid var(--primary);">
+            <strong>After Crash:</strong> Passenger ults immediately. Driver stuns with S1. Team follows. No hesitation = clean wipe.
+        </div>
+        
+        <div class="tip-box">
+            <p style="margin: 0;">🎤 Voice chat makes Johnson 10x better! Coordinate in real-time. Solo queue? Use pings religiously!</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Common Mistakes</h2>
+        <p style="font-size: 11px; color: #aaa; margin-bottom: 8px;">What NOT to do - learn from these errors</p>
+        
+        <h3>🚫 Critical Errors (Game Losing)</h3>
+        <div style="display: grid; gap: 6px; margin: 8px 0;">
+            <div style="background: rgba(248, 113, 113, 0.2); border: 1px solid #f87171; border-radius: 6px; padding: 8px;">
+                <div style="font-size: 11px; color: #f87171; font-weight: 600; margin-bottom: 4px;">❌ Ulting Solo Without Team</div>
+                <p style="font-size: 10px; margin: 0; line-height: 1.5;">You crash, deal damage, then die. No follow-up = wasted ult. ALWAYS check if team can follow before driving. If they're far, don't go.</p>
+            </div>
+            
+            <div style="background: rgba(248, 113, 113, 0.2); border: 1px solid #f87171; border-radius: 6px; padding: 8px;">
+                <div style="font-size: 11px; color: #f87171; font-weight: 600; margin-bottom: 4px;">❌ Predictable Routes</div>
+                <p style="font-size: 10px; margin: 0; line-height: 1.5;">Driving down lane in plain sight. Enemy sees you coming, walks away. Use jungle paths, fog of war, bushes. Surprise = success.</p>
+            </div>
+            
+            <div style="background: rgba(248, 113, 113, 0.2); border: 1px solid #f87171; border-radius: 6px; padding: 8px;">
+                <div style="font-size: 11px; color: #f87171; font-weight: 600; margin-bottom: 4px;">❌ Crashing Into Entire Enemy Team</div>
+                <p style="font-size: 10px; margin: 0; line-height: 1.5;">1v5 ult = instant death. You're not immortal. Wait for picks (1-2 enemies) or fight when your team has advantage. Patience wins.</p>
+            </div>
+            
+            <div style="background: rgba(248, 113, 113, 0.2); border: 1px solid #f87171; border-radius: 6px; padding: 8px;">
+                <div style="font-size: 11px; color: #f87171; font-weight: 600; margin-bottom: 4px;">❌ Leaving Lane Carry Alone</div>
+                <p style="font-size: 10px; margin: 0; line-height: 1.5;">Your MM dies 4 times early because you're always roaming. Balance roaming with lane presence. If carry is struggling, STAY and help.</p>
+            </div>
+        </div>
+        
+        <h3>⚠️ Moderate Mistakes (Costly)</h3>
+        <ul>
+            <li><strong>Wasting Ult on Low-Value Targets:</strong> Don't ult for support kills. Save for carries/mages. Prioritize high-impact ganks.</li>
+            <li><strong>Not Checking Map Before Driving:</strong> See where all 5 enemies are. One missing = potential ambush on you mid-drive.</li>
+            <li><strong>Picking Wrong Passenger:</strong> Taking tank/fighter instead of burst damage hero. Always prefer Odette/Gusion/Aurora.</li>
+            <li><strong>Forgetting to Activate S2:</strong> Enhanced basic attacks DURING drive. Don't waste free damage. Press S2 while car mode.</li>
+            <li><strong>Face-checking Bushes While Driving:</strong> Enemy team hiding in bush = you crash into 5v2. Use vision first.</li>
+        </ul>
+        
+        <h3>💡 Minor Mistakes (Learn to Avoid)</h3>
+        <ul>
+            <li>Not body blocking skill shots for carry</li>
+            <li>Staying at low HP instead of recalling</li>
+            <li>Farming jungle when objectives are up</li>
+            <li>Not buying boots early (mobility crucial)</li>
+            <li>Ulting when enemy team has all escapes up</li>
+            <li>Not tracking enemy Flicker/Purify cooldowns</li>
+        </ul>
+        
+        <div class="emblem-box" style="background: linear-gradient(135deg, rgba(255, 51, 102, 0.15), rgba(255, 51, 102, 0.05)); border-color: var(--accent);">
+            <strong style="color: var(--accent);">Reality Check:</strong> Most Johnson deaths are from IMPATIENCE. Wait for right moment. One good ult > three bad ults. Quality over quantity!
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Advanced Strategies</h2>
+        <ul>
+            <li><strong>Bush Ambush:</strong> Hide in bush with ult ready, surprise enemies</li>
+            <li><strong>Split-push Counter:</strong> Ult across map to defend/gank split-pusher</li>
+            <li><strong>Objective Steal:</strong> Crash into Lord/Turtle pit to disrupt enemy</li>
+            <li><strong>Escape Route:</strong> Use ult to retreat with low HP teammate</li>
+            <li><strong>Flicker Extend:</strong> Ult → Crash → Flicker for extra distance stun</li>
+            <li><strong>Bait & Switch:</strong> Drive toward enemy, make them waste skills, cancel ult</li>
+        </ul>
+        
+        <div class="tip-box">
+            <p style="margin: 0;">Master the ult drift! Turn sharply before impact to hit multiple enemies. Practice makes perfect!</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Frame Data Guide</h2>
+        <p style="font-size: 11px; color: #aaa; margin-bottom: 8px;">Precise timing windows (milliseconds matter!)</p>
+        
+        <div style="background: var(--darker); border: 2px solid var(--primary); border-radius: 8px; padding: 10px; margin-bottom: 10px;">
+            <div style="text-align: center; font-family: 'Orbitron', sans-serif; font-size: 11px; color: var(--primary); margin-bottom: 8px; font-weight: 700;">⏱️ ABILITY FRAME DATA</div>
+            
+            <div style="display: grid; gap: 8px;">
+                <div style="background: var(--card-bg); border-radius: 6px; padding: 8px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                        <span style="font-size: 11px; color: var(--primary); font-weight: 600;">Ultimate - Rapid Touchdown</span>
+                    </div>
+                    <div style="display: grid; grid-template-columns: auto 1fr; gap: 8px; font-size: 10px; line-height: 1.6;">
+                        <span style="color: #888;">Startup:</span>
+                        <span style="color: #ccc;"><strong>0.5s</strong> (transformation animation)</span>
+                        <span style="color: #888;">Active:</span>
+                        <span style="color: #ccc;"><strong>10s max</strong> (can cancel anytime)</span>
+                        <span style="color: #888;">Impact Stun:</span>
+                        <span style="color: #ccc;"><strong>0.75s-1.5s</strong> (scales with speed)</span>
+                        <span style="color: #888;">Recovery:</span>
+                        <span style="color: #ccc;"><strong>0.3s</strong> (after crash, can cast S1)</span>
+                    </div>
+                </div>
+                
+                <div style="background: var(--card-bg); border-radius: 6px; padding: 8px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                        <span style="font-size: 11px; color: var(--primary); font-weight: 600;">S1 - Deadly Pincers</span>
+                    </div>
+                    <div style="display: grid; grid-template-columns: auto 1fr; gap: 8px; font-size: 10px; line-height: 1.6;">
+                        <span style="color: #888;">Cast Time:</span>
+                        <span style="color: #ccc;"><strong>0.2s</strong> (very fast)</span>
+                        <span style="color: #888;">Stun Duration:</span>
+                        <span style="color: #ccc;"><strong>0.8s-1.0s</strong> (scales with level)</span>
+                        <span style="color: #888;">Recovery:</span>
+                        <span style="color: #ccc;"><strong>0.4s</strong> (can combo into S2)</span>
+                        <span style="color: #888;">Total Frame:</span>
+                        <span style="color: #ccc;"><strong>~0.6s</strong> (full animation)</span>
+                    </div>
+                </div>
+                
+                <div style="background: var(--card-bg); border-radius: 6px; padding: 8px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                        <span style="font-size: 11px; color: var(--primary); font-weight: 600;">S2 - Missile Loadout</span>
+                    </div>
+                    <div style="display: grid; grid-template-columns: auto 1fr; gap: 8px; font-size: 10px; line-height: 1.6;">
+                        <span style="color: #888;">Cast Time:</span>
+                        <span style="color: #ccc;"><strong>Instant</strong> (no animation)</span>
+                        <span style="color: #888;">Duration:</span>
+                        <span style="color: #ccc;"><strong>6s</strong> (enhanced attacks)</span>
+                        <span style="color: #888;">Attack Speed:</span>
+                        <span style="color: #ccc;"><strong>+30%</strong> bonus during buff</span>
+                        <span style="color: #888;">Missile Travel:</span>
+                        <span style="color: #ccc;"><strong>0.15s</strong> (projectile speed)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <h3>⚡ Critical Timing Windows</h3>
+        <div style="display: grid; gap: 6px; margin: 8px 0;">
+            <div class="combo-step" style="background: rgba(74, 222, 128, 0.1); border-left: 2px solid #4ade80;">
+                <strong>Perfect Combo Window:</strong> Ult crash → Wait 0.3s → S1 stun (during enemy recovery) → 0.4s → S2 activate. Total: <strong>1.1s for full burst</strong>
+            </div>
+            
+            <div class="combo-step" style="background: rgba(251, 191, 36, 0.1); border-left: 2px solid #fbbf24;">
+                <strong>Flicker Extension:</strong> Ult driving → 0.2s before impact → Flicker forward = +2 car lengths range. Enemy can't react in <strong>0.2s window</strong>
+            </div>
+            
+            <div class="combo-step" style="background: rgba(236, 72, 153, 0.1); border-left: 2px solid #ec4899;">
+                <strong>Cancel Window:</strong> Can cancel ult anytime <strong>0.5s+ before impact</strong>. If closer, you'll still crash. Practice timing!
+            </div>
+        </div>
+        
+        <div class="tip-box">
+            <p style="margin: 0;">🎯 Frame-perfect play: S1 has 0.2s cast = fastest CC in game. Use immediately after crash (0.3s recovery) for guaranteed chain stun!</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Hitbox & Collision Guide</h2>
+        <p style="font-size: 11px; color: #aaa; margin-bottom: 8px;">Master the physics of Johnson's ult</p>
+        
+        <h3>🚗 Car Form Dimensions</h3>
+        <div style="background: linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(0, 102, 255, 0.1)); border: 1px solid var(--primary); border-radius: 6px; padding: 10px; margin-bottom: 8px;">
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; font-size: 10px;">
+                <div>
+                    <div style="color: #888; font-size: 9px;">CAR WIDTH</div>
+                    <div style="color: var(--primary); font-family: 'Orbitron', sans-serif; font-size: 16px; font-weight: 700;">~1.8 units</div>
+                    <div style="color: #ccc; font-size: 9px; margin-top: 2px;">Can hit 2-3 enemies side-by-side</div>
+                </div>
+                <div>
+                    <div style="color: #888; font-size: 9px;">CAR LENGTH</div>
+                    <div style="color: var(--primary); font-family: 'Orbitron', sans-serif; font-size: 16px; font-weight: 700;">~2.5 units</div>
+                    <div style="color: #ccc; font-size: 9px; margin-top: 2px;">Front hitbox connects first</div>
+                </div>
+                <div>
+                    <div style="color: #888; font-size: 9px;">STUN RADIUS</div>
+                    <div style="color: var(--primary); font-family: 'Orbitron', sans-serif; font-size: 16px; font-weight: 700;">2.0 units</div>
+                    <div style="color: #ccc; font-size: 9px; margin-top: 2px;">Slightly wider than car visual</div>
+                </div>
+                <div>
+                    <div style="color: #888; font-size: 9px;">MAX SPEED</div>
+                    <div style="color: var(--primary); font-family: 'Orbitron', sans-serif; font-size: 16px; font-weight: 700;">~700 units/s</div>
+                    <div style="color: #ccc; font-size: 9px; margin-top: 2px;">Fastest MS in game while driving</div>
+                </div>
+            </div>
+        </div>
+        
+        <h3>🎯 Collision Mechanics</h3>
+        <ul style="font-size: 10px; line-height: 1.6;">
+            <li><strong>Wall Collision:</strong> Hitting walls at <45° angle = minimal slowdown. Hit at 90° = full stop + 1s stun on self. Always drift along walls, never into them.</li>
+            <li><strong>Multi-Enemy Crash:</strong> Hitbox can stun max 5 enemies. Damage splits equally. Prioritize hitting carries, not tanks.</li>
+            <li><strong>Minion Collision:</strong> Car IGNORES minions completely. Drive through waves freely. Use this for surprise attacks!</li>
+            <li><strong>Structure Collision:</strong> Towers/Lord = instant crash. Careful near objectives. Can use walls to extend crash angle.</li>
+            <li><strong>Terrain Clipping:</strong> Thin walls (jungle walls) = you phase through if speed >600. Thick walls (base walls) = always collide.</li>
+        </ul>
+        
+        <h3>📐 Advanced Drift Angles</h3>
+        <div style="display: grid; gap: 6px; margin: 8px 0;">
+            <div style="background: var(--darker); border: 1px solid var(--secondary); border-radius: 6px; padding: 8px;">
+                <div style="font-size: 11px; color: var(--primary); margin-bottom: 4px; font-weight: 600;">🔄 90° Sharp Turn</div>
+                <p style="font-size: 10px; margin: 0; line-height: 1.5;">Method: Release joystick → Immediately turn 90° → Accelerate. Speed loss: ~30%. Use for corner ambushes or dodging skill shots mid-drive.</p>
+            </div>
+            
+            <div style="background: var(--darker); border: 1px solid var(--secondary); border-radius: 6px; padding: 8px;">
+                <div style="font-size: 11px; color: var(--primary); margin-bottom: 4px; font-weight: 600;">🌀 180° Drift (U-Turn)</div>
+                <p style="font-size: 10px; margin: 0; line-height: 1.5;">Method: Full speed → Sharp turn while braking → Release brake at 180°. Speed loss: ~50%. Use to crash enemies chasing you or fake-out retreats.</p>
+            </div>
+            
+            <div style="background: var(--darker); border: 1px solid var(--secondary); border-radius: 6px; padding: 8px;">
+                <div style="font-size: 11px; color: var(--primary); margin-bottom: 4px; font-weight: 600;">⚡ 45° Angle Crash (Optimal)</div>
+                <p style="font-size: 10px; margin: 0; line-height: 1.5;">Method: Approach at 45° diagonal. Speed loss: ~10%. BEST stun duration (1.5s max). Hits multiple enemies in line formation. Master this angle!</p>
+            </div>
+        </div>
+        
+        <h3>🧱 Wall Bounce Tech (Advanced)</h3>
+        <div class="combo-step" style="background: rgba(255, 51, 102, 0.1); border-left: 2px solid var(--accent);">
+            <strong>Setup:</strong> Drive parallel to wall at max speed → Turn into wall at 30° angle → Instantly turn away = bounce effect adds +15% speed for 0.5s. Enemies can't predict trajectory!
+        </div>
+        
+        <div class="tip-box">
+            <p style="margin: 0;">⚠️ Hitbox extends 0.5 units beyond visual car model. You can hit enemies that "look" like they're safe. Trust the hitbox!</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Animation Canceling</h2>
+        <p style="font-size: 11px; color: #aaa; margin-bottom: 8px;">Speed up combos with animation cancels</p>
+        
+        <h3>⚡ Core Animation Cancels</h3>
+        <div style="display: grid; gap: 8px; margin: 8px 0;">
+            <div style="background: linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(0, 102, 255, 0.1)); border: 1px solid var(--primary); border-radius: 6px; padding: 10px;">
+                <div style="font-family: 'Orbitron', sans-serif; font-size: 11px; color: var(--primary); margin-bottom: 6px; font-weight: 700;">1. S1 → S2 CANCEL (Most Important)</div>
+                <div style="font-size: 10px; line-height: 1.6; color: #ccc;">
+                    <strong>Standard Timing:</strong> S1 cast (0.2s) → Wait full recovery (0.4s) → S2 activate = <strong>0.6s total</strong><br>
+                    <strong>Cancel Timing:</strong> S1 cast (0.2s) → S2 activate immediately = <strong>0.2s total</strong><br>
+                    <strong>Benefit:</strong> 0.4s faster = enemy has less time to react/escape<br>
+                    <strong>Method:</strong> Press S1 → Immediately spam S2 button during animation
+                </div>
+            </div>
+            
+            <div style="background: linear-gradient(135deg, rgba(74, 222, 128, 0.15), rgba(74, 222, 128, 0.1)); border: 1px solid #4ade80; border-radius: 6px; padding: 10px;">
+                <div style="font-family: 'Orbitron', sans-serif; font-size: 11px; color: #4ade80; margin-bottom: 6px; font-weight: 700;">2. BASIC ATTACK → S1 CANCEL</div>
+                <div style="font-size: 10px; line-height: 1.6; color: #ccc;">
+                    <strong>Standard Timing:</strong> Basic attack animation (0.6s) → S1 cast = <strong>0.8s total</strong><br>
+                    <strong>Cancel Timing:</strong> Basic attack startup (0.3s) → S1 interrupts = <strong>0.5s total</strong><br>
+                    <strong>Benefit:</strong> Faster CC chain in lane trades<br>
+                    <strong>Method:</strong> Start basic attack → Cancel mid-swing with S1
+                </div>
+            </div>
+            
+            <div style="background: linear-gradient(135deg, rgba(251, 191, 36, 0.15), rgba(251, 191, 36, 0.1)); border: 1px solid #fbbf24; border-radius: 6px; padding: 10px;">
+                <div style="font-family: 'Orbitron', sans-serif; font-size: 11px; color: #fbbf24; margin-bottom: 6px; font-weight: 700;">3. ULT TRANSFORMATION SKIP</div>
+                <div style="font-size: 10px; line-height: 1.6; color: #ccc;">
+                    <strong>Standard Timing:</strong> Ult press → Transformation (0.5s) → Drive = <strong>0.5s delay</strong><br>
+                    <strong>Optimized:</strong> Pre-position in bush → Ult instant activation = <strong>Enemy sees you 0.5s later</strong><br>
+                    <strong>Benefit:</strong> Less reaction time for enemies<br>
+                    <strong>Method:</strong> Hide in fog → Ult from stealth = faster gank
+                </div>
+            </div>
+            
+            <div style="background: linear-gradient(135deg, rgba(236, 72, 153, 0.15), rgba(236, 72, 153, 0.1)); border: 1px solid #ec4899; border-radius: 6px; padding: 10px;">
+                <div style="font-family: 'Orbitron', sans-serif; font-size: 11px; color: #ec4899; margin-bottom: 6px; font-weight: 700;">4. FLICKER DURING CRASH (Frame Perfect)</div>
+                <div style="font-size: 10px; line-height: 1.6; color: #ccc;">
+                    <strong>Standard:</strong> Crash → Recovery (0.3s) → Flicker away = <strong>0.3s vulnerable</strong><br>
+                    <strong>Cancel:</strong> Crash startup (0.1s before impact) → Flicker = <strong>Instant escape</strong><br>
+                    <strong>Benefit:</strong> Hit & run with no counterplay window<br>
+                    <strong>Method:</strong> Requires practice mode training (hardest tech)
+                </div>
+            </div>
+        </div>
+        
+        <h3>🎮 Advanced Combo with Cancels</h3>
+        <div class="combo-step" style="background: rgba(0, 212, 255, 0.1); border-left: 2px solid var(--primary);">
+            <strong>Optimal Burst:</strong> Ult crash (instant) → S1 during recovery (0.2s) → S1→S2 cancel (0.2s) → Basic attacks = <strong>Full combo in 0.7s</strong> (vs 1.3s without cancels)
+        </div>
+        
+        <div class="tip-box">
+            <p style="margin: 0;">🏆 Master S1→S2 cancel first. It's easiest and gives biggest advantage. Practice in Practice Mode for 10 mins daily!</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Camera Control Tips</h2>
+        <p style="font-size: 11px; color: #aaa; margin-bottom: 8px;">Vision mastery while driving</p>
+        
+        <h3>📷 Camera Settings (Critical!)</h3>
+        <div style="background: var(--darker); border: 2px solid var(--accent); border-radius: 6px; padding: 10px; margin-bottom: 8px;">
+            <div style="font-size: 10px; color: var(--accent); font-weight: 600; margin-bottom: 6px;">⚠️ REQUIRED SETTINGS FOR JOHNSON</div>
+            <ul style="font-size: 10px; line-height: 1.6; margin: 0;">
+                <li><strong>Camera Sensitivity:</strong> Set to HIGH (80-100%). Need fast panning during drives.</li>
+                <li><strong>Free Camera Mode:</strong> ENABLED. Allows independent camera from hero.</li>
+                <li><strong>Camera Follow Speed:</strong> MEDIUM. Too fast = disorienting, too slow = can't scout ahead.</li>
+                <li><strong>Map Size:</strong> LARGE. Need to see more terrain during cross-map ults.</li>
+            </ul>
+        </div>
+        
+        <h3>👁️ Camera Techniques While Driving</h3>
+        <div style="display: grid; gap: 6px; margin: 8px 0;">
+            <div style="background: var(--card-bg); border: 1px solid var(--secondary); border-radius: 6px; padding: 8px;">
+                <div style="font-size: 11px; color: var(--primary); margin-bottom: 4px; font-weight: 600;">🔍 SCOUT AHEAD TECHNIQUE</div>
+                <p style="font-size: 10px; margin: 0; line-height: 1.5;"><strong>Method:</strong> While driving, drag camera 2 screens ahead of car. See enemies before they see you. Check for ambushes/traps. Return camera before crash for precise aim.</p>
+                <p style="font-size: 9px; margin: 4px 0 0 0; color: #888;"><em>Use: Long-range ganks (base to lane). Check if target still there.</em></p>
+            </div>
+            
+            <div style="background: var(--card-bg); border: 1px solid var(--secondary); border-radius: 6px; padding: 8px;">
+                <div style="font-size: 11px; color: var(--primary); margin-bottom: 4px; font-weight: 600;">🎯 IMPACT CENTERING</div>
+                <p style="font-size: 10px; margin: 0; line-height: 1.5;"><strong>Method:</strong> 1 second before crash, snap camera back to center (double tap map). Perfect crash aim + see all 5 enemies' positions instantly.</p>
+                <p style="font-size: 9px; margin: 4px 0 0 0; color: #888;"><em>Use: Teamfight engages. Know who to S1 stun after crash.</em></p>
+            </div>
+            
+            <div style="background: var(--card-bg); border: 1px solid var(--secondary); border-radius: 6px; padding: 8px;">
+                <div style="font-size: 11px; color: var(--primary); margin-bottom: 4px; font-weight: 600;">🔄 PERIPHERAL VISION SWEEP</div>
+                <p style="font-size: 10px; margin: 0; line-height: 1.5;"><strong>Method:</strong> Quick left-right camera swipes (0.5s each) while driving straight. Scan jungle for enemy rotations without changing path.</p>
+                <p style="font-size: 9px; margin: 4px 0 0 0; color: #888;"><em>Use: Avoiding counter-ganks. See if enemies are collapsing on you.</em></p>
+            </div>
+            
+            <div style="background: var(--card-bg); border: 1px solid var(--secondary); border-radius: 6px; padding: 8px;">
+                <div style="font-size: 11px; color: var(--primary); margin-bottom: 4px; font-weight: 600;">🗺️ MINIMAP GLANCING</div>
+                <p style="font-size: 10px; margin: 0; line-height: 1.5;"><strong>Method:</strong> During 5+ second drives, glance at minimap every 2 seconds. Don't stare at car. Trust muscle memory for driving.</p>
+                <p style="font-size: 9px; margin: 4px 0 0 0; color: #888;"><em>Use: See if gank target recalled or if team is following up.</em></p>
+            </div>
+        </div>
+        
+        <h3>🎬 Camera Angles for Different Scenarios</h3>
+        <ul style="font-size: 10px; line-height: 1.6;">
+            <li><strong>Lane Gank:</strong> Camera ahead by 1 screen. Watch enemy retreat path. Predict their dodge direction.</li>
+            <li><strong>Teamfight Initiate:</strong> Wide camera angle (zoomed out). See all 5 enemies. Count who has ult before committing.</li>
+            <li><strong>Escape Ult:</strong> Camera behind car. See enemy chasing. Turn sharp when they use CC, dodge with drift.</li>
+            <li><strong>Lord/Turtle Crash:</strong> Camera on objective pit. Ignore the drive path (use minimap). Focus on timing the crash as enemies start objective.</li>
+        </ul>
+        
+        <h3>🚨 Common Camera Mistakes</h3>
+        <div style="background: rgba(248, 113, 113, 0.15); border-left: 3px solid #f87171; border-radius: 4px; padding: 8px; margin: 8px 0;">
+            <ul style="font-size: 10px; margin: 0; line-height: 1.6;">
+                <li>❌ <strong>Tunnel Vision:</strong> Staring at car entire drive. You miss enemy rotations = die to ambush.</li>
+                <li>❌ <strong>No Center Reset:</strong> Camera stuck off-center during crash. You miss your S1 stun window.</li>
+                <li>❌ <strong>Ignoring Minimap:</strong> Only use camera, never check minimap. Miss important info (recalls, splits).</li>
+                <li>❌ <strong>Fixed Camera:</strong> Never adjusting camera = mechanical play only. No strategic vision.</li>
+            </ul>
+        </div>
+        
+        <div class="emblem-box">
+            <strong style="color: var(--primary);">Pro Habit:</strong> Top Johnson players look at minimap 40% of drive time, camera scout 30%, watch car 30%. Train this ratio in Practice Mode!
+        </div>
+        
+        <h3>📱 Mobile vs PC Camera Differences</h3>
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; margin-top: 8px;">
+            <div style="background: rgba(0, 212, 255, 0.1); border: 1px solid var(--primary); border-radius: 4px; padding: 6px;">
+                <div style="font-size: 10px; color: var(--primary); font-weight: 600; margin-bottom: 3px;">📱 MOBILE</div>
+                <p style="font-size: 9px; margin: 0; line-height: 1.4;">Limited screen. Use tap-to-move for camera. Harder to scout ahead. Focus on minimap more.</p>
+            </div>
+            <div style="background: rgba(74, 222, 128, 0.1); border: 1px solid #4ade80; border-radius: 4px; padding: 6px;">
+                <div style="font-size: 10px; color: #4ade80; font-weight: 600; margin-bottom: 3px;">💻 PC/TABLET</div>
+                <p style="font-size: 9px; margin: 0; line-height: 1.4;">Large screen advantage. Full camera freedom. Can see entire teamfight. Easier to master.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Advanced Strategies</h2>
+        <ul>
+            <li><strong>Bush Ambush:</strong> Hide in bush with ult ready, surprise enemies</li>
+            <li><strong>Split-push Counter:</strong> Ult across map to defend/gank split-pusher</li>
+            <li><strong>Objective Steal:</strong> Crash into Lord/Turtle pit to disrupt enemy</li>
+            <li><strong>Escape Route:</strong> Use ult to retreat with low HP teammate</li>
+            <li><strong>Flicker Extend:</strong> Ult → Crash → Flicker for extra distance stun</li>
+            <li><strong>Bait & Switch:</strong> Drive toward enemy, make them waste skills, cancel ult</li>
+        </ul>
+        
+        <div class="tip-box">
+            <p style="margin: 0;">Master the ult drift! Turn sharply before impact to hit multiple enemies. Practice makes perfect!</p>
+        </div>
+    </div>
+
+    <script>
+        // Video Demo functionality
+        function openVideo(videoId) {
+            const videos = {
+                'basic-combo': 'https://www.youtube.com/results?search_query=mobile+legends+johnson+basic+combo+2026',
+                'advanced-drift': 'https://www.youtube.com/results?search_query=mobile+legends+johnson+drift+technique',
+                'map-routes': 'https://www.youtube.com/results?search_query=mobile+legends+johnson+gank+routes',
+                'teamfight': 'https://www.youtube.com/results?search_query=mobile+legends+johnson+teamfight+guide'
+            };
+            
+            alert('🎥 Opening video tutorial...\n\nSearch YouTube for: "Mobile Legends Johnson ' + videoId.replace('-', ' ') + ' 2026" for the latest guides!');
+            // In production, this would open actual embedded videos or links
+        }
+        
+        // Damage Calculator functionality
+        function calculateDamage() {
+            const level = parseInt(document.getElementById('heroLevel').value);
+            const buildType = document.getElementById('buildType').value;
+            
+            document.getElementById('levelDisplay').textContent = level;
+            
+            // Base damage calculations
+            let ultBase = 300 + (level * 50);
+            let s1Base = 200 + (level * 20);
+            let hpBase = 2660 + (level * 220);
+            
+            // Build modifiers
+            let ultDmg, s1Dmg, totalHP, durability, buildDesc;
+            
+            if (buildType === 'tank') {
+                ultDmg = Math.floor(ultBase * 1.0);
+                s1Dmg = Math.floor(s1Base * 1.0);
+                totalHP = Math.floor(hpBase * 2.1);
+                durability = Math.floor(85 + (level * 0.7));
+                buildDesc = 'Full Tank: High survivability, consistent CC, best for teamfights. Recommended for climbing ranks.';
+            } else if (buildType === 'hybrid') {
+                ultDmg = Math.floor(ultBase * 1.25);
+                s1Dmg = Math.floor(s1Base * 1.2);
+                totalHP = Math.floor(hpBase * 1.6);
+                durability = Math.floor(65 + (level * 0.5));
+                buildDesc = 'Hybrid Build: Balanced damage and defense. Good for snowballing but riskier. Works if team has another tank.';
+            } else {
+                ultDmg = Math.floor(ultBase * 1.5);
+                s1Dmg = Math.floor(s1Base * 1.4);
+                totalHP = Math.floor(hpBase * 1.2);
+                durability = Math.floor(45 + (level * 0.3));
+                buildDesc = 'Full Damage: Maximum crash damage but very squishy. Troll build - NOT recommended for ranked!';
+            }
+            
+            document.getElementById('ultDamage').textContent = ultDmg;
+            document.getElementById('s1Damage').textContent = s1Dmg;
+            document.getElementById('totalHP').textContent = totalHP;
+            document.getElementById('durability').textContent = durability;
+            document.getElementById('buildComparison').textContent = buildDesc;
+        }
+        
+        // Initialize calculator on load
+        calculateDamage();
+        
+        // Add hover effects to video cards
+        document.querySelectorAll('[onclick^="openVideo"]').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateX(5px)';
+                this.style.borderColor = 'var(--primary)';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateX(0)';
+                this.style.borderColor = 'var(--secondary)';
+            });
+        });
+    </script>
+</body>
+</html>
